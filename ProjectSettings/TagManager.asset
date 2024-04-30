@@ -8,6 +8,7 @@ TagManager:
   - gula
   - kladivo
   - Projectile
+  - GameManager
   layers:
   - Default
   - TransparentFX
