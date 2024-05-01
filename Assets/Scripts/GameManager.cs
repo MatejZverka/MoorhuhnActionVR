@@ -18,11 +18,9 @@ public class GameManager : MonoBehaviour
 
     private int defaultPlayerScore = 0;
     private int defaultPlayerHealth = 100;
-    private int defaultPistolAmmo = 2;
+    private int defaultPistolAmmo = 19;
     private int defaultShotgunAmmo = 8;
     private int defaultRifleAmmo = 30;
-
-    public AudioSource backgroundMusic;
 
     private void Awake()
     {
@@ -39,10 +37,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ResetGame();
-        if (backgroundMusic != null)
-        {
-            backgroundMusic.Play();
-        }
     }
 
     public void IncreaseScore(int amount)
@@ -96,6 +90,11 @@ public class GameManager : MonoBehaviour
             case AmmoType.Rifle:
                 rifleAmmo += amount;
                 break;
+            case AmmoType.All:
+                pistolAmmo += 19;
+                shotgunAmmo += 8;
+                rifleAmmo += 30;
+                break;
         }
     }
 
@@ -135,5 +134,6 @@ public enum AmmoType
 {
     Pistol,
     Shotgun,
-    Rifle
+    Rifle,
+    All
 }

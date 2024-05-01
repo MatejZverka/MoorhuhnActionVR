@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7460901216258534853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 909928234187206665}
+  - component: {fileID: 5007113698881469070}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: AudioManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &909928234187206665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460901216258534853}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3644194, y: -0.4524626, z: 4.921948}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5007113698881469070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460901216258534853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7195342e285c15f42ab430c73662f5b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoPickup: {fileID: 8300000, guid: f5ffcc5b695a43f4ab93c468cfc726de, type: 3}
+  ammoPickupVolume: 0.5
+  grenadePin: {fileID: 8300000, guid: 4c615d8828bacca4f9812f416278ed11, type: 3}
+  grenadePinVolume: 1
+  grenadeExplosion: {fileID: 8300000, guid: 4675ea6a474cb304c84e22ae70044785, type: 3}
+  grenadeExplosionVolume: 0.25
+  shotgunSound: {fileID: 8300000, guid: 3cbcb58a197a5fb4380a5500692faf3d, type: 3}
+  shotgunSoundVolume: 0.45
+  shotgunReload: {fileID: 8300000, guid: 6c3789d23ca764e44a02510b0cc4ec84, type: 3}
+  shotgunReloadVolume: 0.8
+  shotgunRack: {fileID: 8300000, guid: 922a348ae1f85b044a7e9b5012829f1c, type: 3}
+  shotgunRackVolume: 0.75
+  rifleSound: {fileID: 8300000, guid: 72153bf2635dcf046a0b1eebe0e8a46b, type: 3}
+  rifleSoundVolume: 0.75
+  rifleReload: {fileID: 8300000, guid: 33e06374a8ef7084984fb1e98eca8fc5, type: 3}
+  rifleReloadVolume: 0.7
+  emptyMagazine: {fileID: 8300000, guid: 2bfbc9582f4933f4aaa66292565b043e, type: 3}
+  emptyMagazineVolume: 1
+  backgroundMusic: {fileID: 8300000, guid: 6b19c8f33f5bb974984f79eeb2e043e9, type: 3}
+  backgroundMusicSource: {fileID: 0}
+  backgroundMusicVolume: 0.1
+  audioMixer: {fileID: 0}

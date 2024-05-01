@@ -9,6 +9,7 @@ TagManager:
   - kladivo
   - Projectile
   - GameManager
+  - AudioManager
   layers:
   - Default
   - TransparentFX

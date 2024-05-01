@@ -7,27 +7,19 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Grenade : MonoBehaviour
 {
+    [SerializeField] ParticleSystem muzzleFlash;
     GameManager gameManager;
+    AudioManager audioManager;
     [SerializeField] XRGrabInteractable grabInteractable;
     [SerializeField] Transform raycastOrigin;
     [SerializeField] LayerMask targetLayer;
     [SerializeField] float sphereRadius = 1f;
-    [SerializeField] AudioClip pinSound;
-    [SerializeField] AudioClip explodeSound;
-    private AudioSource audioSource;
 
     private void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-
-        if (audioSource == null)
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
-        else
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        muzzleFlash.Stop();
     }
 
     private void OnEnable()
@@ -42,18 +34,21 @@ public class Grenade : MonoBehaviour
 
     public void TriggerPulled(ActivateEventArgs arg0)
     {
-        audioSource.clip = pinSound;
-        audioSource.Play();
+        audioManager.PlayGrenadePinClip();
         StartCoroutine(DestroyAfterDelay());
     }
 
     private IEnumerator DestroyAfterDelay()
     {
-        yield return new WaitForSeconds(3f);
-        audioSource.clip = explodeSound;
-        audioSource.Play();
+        yield return new WaitForSeconds(3.5f);
+        audioManager.PlayGrenadeExplosionClip();
         FireRaycastIntoScene();
-        yield return new WaitForSeconds(1f);
+
+        muzzleFlash.enableEmission = true;
+        muzzleFlash.transform.position = raycastOrigin.position;
+        muzzleFlash.Play();
+
+        yield return new WaitForSeconds(0.2f);
         Destroy(gameObject);
     }
 

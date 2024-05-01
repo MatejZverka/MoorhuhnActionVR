@@ -7,6 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Pistol : MonoBehaviour
 {
+    [SerializeField] ParticleSystem muzzleFlash;
     GameManager gameManager;
     private int cycler = 0;
     private int currentAmmo;
@@ -22,7 +23,7 @@ public class Pistol : MonoBehaviour
     [SerializeField] int magazineCapacity = 19;
     private int remainingBullets;
 
-    [SerializeField] float reloadTime = 2.625f;
+    [SerializeField] float reloadTime = 2.5f;
     private bool isReloading;
 
     private void Start()
@@ -39,6 +40,7 @@ public class Pistol : MonoBehaviour
         {
             audioSource = GetComponent<AudioSource>();
         }
+        muzzleFlash.Stop();
     }
 
     private void OnEnable()
@@ -66,6 +68,11 @@ public class Pistol : MonoBehaviour
             remainingBullets--;
             Debug.Log("Magazine: " + remainingBullets + "   Reserve: " + currentAmmo);
             FireRaycastIntoScene();
+
+            muzzleFlash.enableEmission = true;
+            muzzleFlash.transform.position = raycastOrigin.position;
+            muzzleFlash.Play();
+
         } else if (!isReloading && (remainingBullets <= 0) && (cycler >= 2)) {
             Debug.Log("Magazine: " + remainingBullets + "   Reserve: " + currentAmmo);
             cycler = 0;
@@ -96,6 +103,7 @@ public class Pistol : MonoBehaviour
 
     public void OnPrimaryButtonPressed(InputAction.CallbackContext reload)
     {
+        UpdateCurrentAmmo();
         //Debug.Log("Congrats, you wasted 6 hours of your life on this");
         if (!isReloading && (remainingBullets < magazineCapacity) && (currentAmmo > 0))
         {
@@ -136,6 +144,11 @@ public class Pistol : MonoBehaviour
             enemy.TakeDamage(WeaponType.Pistol);
             Debug.Log("Enemy hit -35 HP");
         }
+    }
+
+    public void UpdateCurrentAmmo()
+    {
+        currentAmmo = gameManager.GetCurrentAmmo(AmmoType.Pistol);
     }
 
 }
