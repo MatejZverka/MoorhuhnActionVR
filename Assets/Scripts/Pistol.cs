@@ -25,10 +25,12 @@ public class Pistol : MonoBehaviour
 
     [SerializeField] float reloadTime = 2.5f;
     private bool isReloading;
+    private WristCanvas wristCanvas;
 
     private void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        wristCanvas = GameObject.FindGameObjectWithTag("WristCanvas").GetComponent<WristCanvas>();
         currentAmmo = gameManager.GetCurrentAmmo(AmmoType.Pistol);
         remainingBullets = magazineCapacity;
 
@@ -69,6 +71,9 @@ public class Pistol : MonoBehaviour
             Debug.Log("Magazine: " + remainingBullets + "   Reserve: " + currentAmmo);
             FireRaycastIntoScene();
 
+            UpdateCurrentAmmo();
+            wristCanvas.UpdateWristText(remainingBullets + " | " + currentAmmo);
+
             muzzleFlash.enableEmission = true;
             muzzleFlash.transform.position = raycastOrigin.position;
             muzzleFlash.Play();
@@ -90,6 +95,8 @@ public class Pistol : MonoBehaviour
             Debug.Log("Currently grabbed object: " + grabbedObject.name);
             if (grabbedObject.name == "Pistol")
             {
+                UpdateCurrentAmmo();
+                wristCanvas.UpdateWristText(remainingBullets + " | " + currentAmmo);
                 reloadActionReference.action.performed += OnPrimaryButtonPressed;
             }
         }
@@ -98,6 +105,7 @@ public class Pistol : MonoBehaviour
     private void OnReleased(SelectExitEventArgs args)
     {
         //Debug.Log("Object released. Cancelling code execution.");
+        wristCanvas.UpdateWristText("  |  ");
         reloadActionReference.action.performed -= OnPrimaryButtonPressed;
     }
 
@@ -130,6 +138,8 @@ public class Pistol : MonoBehaviour
         }
         currentAmmo = gameManager.GetCurrentAmmo(AmmoType.Pistol);
 
+        UpdateCurrentAmmo();
+        wristCanvas.UpdateWristText(remainingBullets + " | " + currentAmmo);
         isReloading = false;
         //Debug.Log("Reloaded!");
     }

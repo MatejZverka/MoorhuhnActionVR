@@ -10,6 +10,7 @@ TagManager:
   - Projectile
   - GameManager
   - AudioManager
+  - WristCanvas
   layers:
   - Default
   - TransparentFX

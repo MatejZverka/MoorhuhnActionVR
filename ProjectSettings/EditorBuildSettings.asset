@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Samples/XR Interaction Toolkit/2.5.3/Starter Assets/DemoScene.unity
     guid: 319dafa5c80f29f428dc1e0d03f04177
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/moorhunh.unity
+    guid: a7dbd4fc56068ed4ebe7610dbd10f21e
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ad88ed28cb730624e8f6999dcd2aac15, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: f7d191d6dc9188c4296d7757b9a825c9, type: 2}

@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        wristCanvas = GameObject.FindGameObjectWithTag("WristCanvas").GetComponent<WristCanvas>();
         ResetGame();
     }
 
@@ -117,7 +118,16 @@ public class GameManager : MonoBehaviour
     private void RestartGame()
     {
         ResetGame();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // XR Hands 1.3.0 is broken and will cause Null reference errors on scene reload and even restarting application from script
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene("moorhunh");
+        //RestartApplication();
+    }
+
+    public void RestartApplication()
+    {
+        Application.Quit();
+        Application.LoadLevel(Application.loadedLevel);
     }
 
     private void ResetGame()
@@ -128,6 +138,36 @@ public class GameManager : MonoBehaviour
         shotgunAmmo = defaultShotgunAmmo;
         rifleAmmo = defaultRifleAmmo;
     }
+
+    private WristCanvas wristCanvas;
+    private float timerDuration = 180f;
+    private float timer;
+    private bool isTimerRunning = false;
+    private int minutes;
+    private int seconds;
+
+    public void StartGame()
+    {
+        isTimerRunning = true;
+        timer = timerDuration;
+    }
+
+    private void Update()
+    {
+        if (isTimerRunning)
+        {
+            timer -= Time.deltaTime;
+            minutes = Mathf.FloorToInt(timer / 60);
+            seconds = Mathf.FloorToInt(timer % 60);
+            wristCanvas.UpdateTimeText(string.Format("{0:00}:{1:00}", minutes, seconds));
+
+            if (timer <= 0)
+            {
+                RestartGame();
+            }
+        }
+    }
+
 }
 
 public enum AmmoType

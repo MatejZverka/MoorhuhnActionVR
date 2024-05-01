@@ -22,11 +22,13 @@ public class Rifle : MonoBehaviour
     private bool isReloading;
     private bool holdingRifle = false;
     XRBaseInteractor firingInteractor;
+    private WristCanvas wristCanvas;
 
     private void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        wristCanvas = GameObject.FindGameObjectWithTag("WristCanvas").GetComponent<WristCanvas>();
         currentAmmo = gameManager.GetCurrentAmmo(AmmoType.Rifle);
         remainingBullets = magazineCapacity;
         muzzleFlash.Stop();
@@ -68,6 +70,8 @@ public class Rifle : MonoBehaviour
             Debug.Log("Currently grabbed object: " + grabbedObject.name);
             if (grabbedObject.name == "Rifle")
             {
+                UpdateCurrentAmmo();
+                wristCanvas.UpdateWristText(remainingBullets + " | " + currentAmmo);
                 reloadActionReference.action.performed += OnPrimaryButtonPressed;
                 holdingRifle = true;
             }
@@ -77,6 +81,7 @@ public class Rifle : MonoBehaviour
     private void OnReleased(SelectExitEventArgs args)
     {
         //Debug.Log("Object released. Cancelling code execution.");
+        wristCanvas.UpdateWristText("  |  ");
         reloadActionReference.action.performed -= OnPrimaryButtonPressed;
         holdingRifle = false;
     }
@@ -101,6 +106,9 @@ public class Rifle : MonoBehaviour
                 remainingBullets--;
                 Debug.Log("Magazine: " + remainingBullets + "   Reserve: " + currentAmmo);
                 FireRaycastIntoScene();
+
+                UpdateCurrentAmmo();
+                wristCanvas.UpdateWristText(remainingBullets + " | " + currentAmmo);
  
                 muzzleFlash.enableEmission = true;
                 muzzleFlash.transform.position = raycastOrigin.position;
@@ -136,6 +144,8 @@ public class Rifle : MonoBehaviour
         }
         currentAmmo = gameManager.GetCurrentAmmo(AmmoType.Rifle);
 
+        UpdateCurrentAmmo();
+        wristCanvas.UpdateWristText(remainingBullets + " | " + currentAmmo);
         isReloading = false;
         //Debug.Log("Reloaded!");
     }

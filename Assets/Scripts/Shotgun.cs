@@ -20,11 +20,13 @@ public class Shotgun : MonoBehaviour
     [SerializeField] float reloadTime = 0.7f;
     [SerializeField] float reloadFinishTime = 0.5f;
     private bool isReloading;
+    private WristCanvas wristCanvas;
 
     private void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        wristCanvas = GameObject.FindGameObjectWithTag("WristCanvas").GetComponent<WristCanvas>();
         currentAmmo = gameManager.GetCurrentAmmo(AmmoType.Shotgun);
         remainingBullets = magazineCapacity;
         muzzleFlash.Stop();
@@ -53,6 +55,9 @@ public class Shotgun : MonoBehaviour
             Debug.Log("Magazine: " + remainingBullets + "   Reserve: " + currentAmmo);
             FireRaycastIntoScene();
 
+            UpdateCurrentAmmo();
+            wristCanvas.UpdateWristText(remainingBullets + " | " + currentAmmo);
+
             muzzleFlash.enableEmission = true;
             muzzleFlash.transform.position = raycastOrigin.position;
             muzzleFlash.Play();
@@ -72,6 +77,8 @@ public class Shotgun : MonoBehaviour
             Debug.Log("Currently grabbed object: " + grabbedObject.name);
             if (grabbedObject.name == "Shotgun")
             {
+                UpdateCurrentAmmo();
+                wristCanvas.UpdateWristText(remainingBullets + " | " + currentAmmo);
                 reloadActionReference.action.performed += OnPrimaryButtonPressed;
             }
         }
@@ -80,6 +87,7 @@ public class Shotgun : MonoBehaviour
     private void OnReleased(SelectExitEventArgs args)
     {
         //Debug.Log("Object released. Cancelling code execution.");
+        wristCanvas.UpdateWristText("  |  ");
         reloadActionReference.action.performed -= OnPrimaryButtonPressed;
     }
 
@@ -126,6 +134,8 @@ public class Shotgun : MonoBehaviour
         audioManager.PlayShotgunRackClip();
         yield return new WaitForSeconds(reloadFinishTime);
 
+        UpdateCurrentAmmo();
+        wristCanvas.UpdateWristText(remainingBullets + " | " + currentAmmo);
         isReloading = false;
         //Debug.Log("Reloaded!");
     }
