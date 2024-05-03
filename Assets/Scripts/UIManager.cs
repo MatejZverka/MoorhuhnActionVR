@@ -12,8 +12,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] public Button startButton;
     [SerializeField] public Button quitButton;
 
+    //private UnityEngine.AI.NavMeshAgent agent;
+
     private void Start()
     {
+        //agent.speed = 0f;
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         startButton.onClick.AddListener(StartGame);
         quitButton.onClick.AddListener(QuitGame);
@@ -21,6 +24,7 @@ public class UIManager : MonoBehaviour
 
     private void StartGame()
     {
+        //agent.speed = 4f;
         Debug.Log("Game is starting");
         startButton.onClick.RemoveAllListeners();
         quitButton.onClick.RemoveAllListeners();

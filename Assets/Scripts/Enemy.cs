@@ -7,9 +7,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Enemy : MonoBehaviour
 {
-    GameManager gameManager;
+    private GameManager gameManager;
     private int health = 100;
     private int scoreGain = 100;
+    private WeaponType weaponType;
 
     private void Start()
     {
@@ -46,6 +47,14 @@ public class Enemy : MonoBehaviour
         gameManager.IncreaseScore(scoreGain);
         Destroy(gameObject);
     }
+    /*
+    void OnCollisionEnter (Collision newCollision) {// pri kolízii s inými objektami// ak sa zrazil s projektilom
+        if (newCollision.gameObject.tag == "Projectile") {
+            Debug.Log("FUNGUJE");
+            //TakeDamage(weaponType);
+        }
+    }*/
+
 }
 
 public enum WeaponType
@@ -55,3 +64,4 @@ public enum WeaponType
     Rifle,
     Grenade
 }
+
