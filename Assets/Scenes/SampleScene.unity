@@ -2353,6 +2353,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Origin
       objectReference: {fileID: 0}
+    - target: {fileID: 8802798330340077868, guid: 915c9df88bf88f54cb490c6ee17d703d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9137779658726439585, guid: 915c9df88bf88f54cb490c6ee17d703d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
