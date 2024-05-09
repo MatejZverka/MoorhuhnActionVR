@@ -16,9 +16,12 @@ public class EnemyFollow : MonoBehaviour
     public Transform spawnPoint;
     public float enemySpeed;
 
+    public GameManager gameManager;
+
 
     void Start()
     {
+        
     }
 
     
@@ -47,7 +50,7 @@ public class EnemyFollow : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             Destroy(bulletObj);
-            //GameManager.health -= 1;
+            gameManager.DecreaseHealth(50);
         }
     }
 }

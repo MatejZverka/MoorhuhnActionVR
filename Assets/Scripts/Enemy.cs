@@ -7,10 +7,12 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Enemy : MonoBehaviour
 {
-    private GameManager gameManager;
+     private GameManager gameManager;
     private int health = 100;
     private int scoreGain = 100;
     private WeaponType weaponType;
+    public ParticleSystem Explosion;
+    public AudioClip AudioClipChicken;
 
     private void Start()
     {
@@ -46,6 +48,8 @@ public class Enemy : MonoBehaviour
     {
         gameManager.IncreaseScore(scoreGain);
         Destroy(gameObject);
+        Instantiate(Explosion,transform.position,transform.rotation);
+        AudioSource.PlayClipAtPoint(AudioClipChicken, gameObject.transform.position);
     }
     /*
     void OnCollisionEnter (Collision newCollision) {// pri kolízii s inými objektami// ak sa zrazil s projektilom
