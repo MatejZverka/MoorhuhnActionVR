@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private int defaultPistolAmmo = 19;
     private int defaultShotgunAmmo = 8;
     private int defaultRifleAmmo = 30;
-
+    /*
     private void Awake()
     {
         if (gameManager == null)
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    */
     private void Start()
     {
         wristCanvas = GameObject.FindGameObjectWithTag("WristCanvas").GetComponent<WristCanvas>();
@@ -117,11 +117,11 @@ public class GameManager : MonoBehaviour
 
     private void RestartGame()
     {
-        ResetGame();
         // XR Hands 1.3.0 is broken and will cause Null reference errors on scene reload and even restarting application from script
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //SceneManager.LoadScene("moorhunh");
         //RestartApplication();
+        //ResetGame();
     }
 
     public void RestartApplication()
@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
     }
 
     private WristCanvas wristCanvas;
-    private float timerDuration = 180f;
+    private float timerDuration = 90f;
     private float timer;
     private bool isTimerRunning = false;
     private int minutes;

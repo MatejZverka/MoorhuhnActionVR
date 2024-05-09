@@ -313,6 +313,17 @@
                 },
                 {
                     "name": "",
+                    "id": "b04956b0-4fdc-4097-a71d-d3b01f294e9e",
+                    "path": "*/{PrimaryTrigger}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c17eb846-7a66-4006-9d57-6b91831868d0",
                     "path": "<Keyboard>/b",
                     "interactions": "",

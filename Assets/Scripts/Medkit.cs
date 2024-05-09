@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
 
-
 public class Medkit : MonoBehaviour
 {
     GameManager gameManager;
@@ -14,7 +13,7 @@ public class Medkit : MonoBehaviour
 
     void Start()
     {
-     gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();   
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();   
     }
 
     private void OnEnable()

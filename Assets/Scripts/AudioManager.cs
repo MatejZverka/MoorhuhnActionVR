@@ -38,8 +38,8 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager audioPlayer;
     public AudioMixer audioMixer;
-
-    void Awake()
+    /*
+    private void Awake()
     {
         if (audioPlayer != null)
         {
@@ -52,7 +52,7 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-
+    */
     void Start()
     {
         backgroundMusicSource = gameObject.AddComponent<AudioSource>();
