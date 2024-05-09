@@ -117,11 +117,11 @@ public class GameManager : MonoBehaviour
 
     private void RestartGame()
     {
+        ResetGame();
         // XR Hands 1.3.0 is broken and will cause Null reference errors on scene reload and even restarting application from script
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //SceneManager.LoadScene("moorhunh");
         //RestartApplication();
-        ResetGame();
     }
 
     public void RestartApplication()
