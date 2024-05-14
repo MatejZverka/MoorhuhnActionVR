@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        gameManager.DecreaseChicken();
         gameManager.IncreaseScore(scoreGain);
         Destroy(gameObject);
         Instantiate(Explosion,transform.position,transform.rotation);

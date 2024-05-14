@@ -11,7 +11,7 @@ public class BulletScript : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
              Destroy(gameObject);
-             gameManager.DecreaseHealth(50);
+             gameManager.DecreaseHealth(10);
         }
     }
 }

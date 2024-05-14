@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     private int defaultPistolAmmo = 19;
     private int defaultShotgunAmmo = 8;
     private int defaultRifleAmmo = 30;
+
+    public int ChickenOnScene = 0;
+    public int Chickenlimit = 2;
+
     /*
     private void Awake()
     {
@@ -119,9 +123,9 @@ public class GameManager : MonoBehaviour
     {
         // XR Hands 1.3.0 is broken and will cause Null reference errors on scene reload and even restarting application from script
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //SceneManager.LoadScene("moorhunh");
-        //RestartApplication();
-        //ResetGame();
+        SceneManager.LoadScene("moorhunh");
+        RestartApplication();
+        ResetGame();
     }
 
     public void RestartApplication()
@@ -167,6 +171,21 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void IncreaseChicken(){
+        ChickenOnScene +=1;
+    }
+
+     public void DecreaseChicken(){
+        ChickenOnScene -=1;
+    }
+
+    public bool CheckChickenLimit(){
+        if (Chickenlimit >= ChickenOnScene){
+            return true;
+        }else return false; 
+    }
+
 
 }
 

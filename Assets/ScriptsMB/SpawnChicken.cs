@@ -11,30 +11,31 @@ public class SpawnChicken : MonoBehaviour
 	public float yMaxRange = 25.0f;
 	public float zMinRange = -25.0f;
 	public float zMaxRange = 25.0f;
-    public int ChickenOnScene;
-    public int Chickenlimit = 6;
 
     public GameObject[] spawnObjects; 
 
     private float nextSpawnTime; 
 
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         nextSpawnTime = Time.time+secondsBetweenSpawning;
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        if (Chickenlimit > ChickenOnScene) {
+        if (gameManager.CheckChickenLimit()){
            if (Time.time  >= nextSpawnTime) {
                 MakeThingToSpawn();	
                 nextSpawnTime = Time.time + secondsBetweenSpawning;
-                ChickenOnScene +=1;    
+                gameManager.IncreaseChicken();
             } 
-        }  
+        }
     }
  
     void MakeThingToSpawn (){

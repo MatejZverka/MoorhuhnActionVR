@@ -6,7 +6,8 @@ using UnityEngine.AI;
 public class EnemyFollow : MonoBehaviour
 {
     public NavMeshAgent enemy;
-    public Transform player;
+    //public GameObject XR_Origin;
+    private Transform player;
 
     [SerializeField] private float timer = 5;
     private float bulletTime;
@@ -21,7 +22,7 @@ public class EnemyFollow : MonoBehaviour
 
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();       
     }
 
     

@@ -5,13 +5,14 @@ using UnityEngine;
 public class EnemyFollowBomb : MonoBehaviour
 {
     public UnityEngine.AI.NavMeshAgent enemy;
-    public Transform player;
+    private Transform player;
     public ParticleSystem Explosion;
 
     public GameManager gameManager;
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     
@@ -26,8 +27,10 @@ public class EnemyFollowBomb : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            Destroy(enemy);
+            Destroy(gameObject);
             Instantiate(Explosion,transform.position,transform.rotation);
+
+            
             gameManager.DecreaseHealth(100);
         }
     }
