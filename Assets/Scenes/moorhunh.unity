@@ -6986,7 +6986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &207044185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20359,6 +20359,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 353837182870771645, guid: c417e482440ab8e478df1e4d72f91f54, type: 3}
+      propertyPath: triggerActionReference
+      value: 
+      objectReference: {fileID: 4179451428589371870, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 2434363155263927137, guid: c417e482440ab8e478df1e4d72f91f54, type: 3}
       propertyPath: m_LocalPosition.x
       value: -28.694
@@ -25154,6 +25158,10 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 2154149985577657231, guid: 8713abc10f2ac3042ba99f1a6d2b6fb1, type: 3}
+      propertyPath: spawnerChicken
+      value: 
+      objectReference: {fileID: 207044184}
     - target: {fileID: 7918665372838048952, guid: 8713abc10f2ac3042ba99f1a6d2b6fb1, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -67297,6 +67305,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1856689993371415958, guid: b8fc48c3affbe734da31ad1e0a013616, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4903839850646291099, guid: b8fc48c3affbe734da31ad1e0a013616, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -67343,7 +67355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6088892705574536878, guid: b8fc48c3affbe734da31ad1e0a013616, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -81122,7 +81134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 03:00
+  m_text: 01:30
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -82328,6 +82340,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Shoot
       objectReference: {fileID: 0}
+    - target: {fileID: 8033975081793298697, guid: 9b244e81e10ccf344b1a76e8e929970d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -82982,6 +82998,10 @@ PrefabInstance:
     - target: {fileID: 4634628504883442181, guid: 0065b8cc4365fa144975775a4367e063, type: 3}
       propertyPath: m_Name
       value: Enemy  Bomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634628504883442181, guid: 0065b8cc4365fa144975775a4367e063, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8743527235609692215, guid: 0065b8cc4365fa144975775a4367e063, type: 3}
       propertyPath: player

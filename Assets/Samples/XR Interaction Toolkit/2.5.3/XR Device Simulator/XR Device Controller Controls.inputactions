@@ -314,7 +314,7 @@
                 {
                     "name": "",
                     "id": "b04956b0-4fdc-4097-a71d-d3b01f294e9e",
-                    "path": "*/{PrimaryTrigger}",
+                    "path": "<XRController>/{PrimaryTrigger}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -326,6 +326,17 @@
                     "name": "",
                     "id": "c17eb846-7a66-4006-9d57-6b91831868d0",
                     "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Primary Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "99fcb607-d35a-4f83-961e-c1db30c4a17d",
+                    "path": "*/{PrimaryButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     public int ChickenOnScene = 0;
     public int Chickenlimit = 2;
+    public GameObject spawnerChicken;
 
     /*
     private void Awake()
@@ -123,8 +124,8 @@ public class GameManager : MonoBehaviour
     {
         // XR Hands 1.3.0 is broken and will cause Null reference errors on scene reload and even restarting application from script
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        SceneManager.LoadScene("moorhunh");
-        RestartApplication();
+        //SceneManager.LoadScene("moorhunh");
+        //RestartApplication();
         ResetGame();
     }
 
@@ -154,6 +155,8 @@ public class GameManager : MonoBehaviour
     {
         isTimerRunning = true;
         timer = timerDuration;
+        
+        spawnerChicken.SetActive(true);
     }
 
     private void Update()
